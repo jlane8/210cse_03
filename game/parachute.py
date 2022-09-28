@@ -93,8 +93,8 @@ class Parachute:
         gradually removing part of the chute with each bad guess.
         """
         
-        # if guess is False and the length of the jumper list is not equal to five, 
-        # delete the first element in the jumper list; if length is five, check to see
+        # if guess is False and the length of the jumper list is not equal to six, 
+        # delete the first element in the jumper list; if length is six, check to see
         # if self._jumper[0] is equal to the dead head string; if it is not, then
         # make self._jumper[0] equal to the dead head string, and afterward it will resume
         # the countdown.
