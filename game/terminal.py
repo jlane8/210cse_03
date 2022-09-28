@@ -93,13 +93,3 @@ class Terminal:
         
         # return player input in lower case form
         return input(prompt).lower()
-
-    # this method has not been implemented yet - meant to enhance the
-    # game with some list manipulation which will appear to show the jumper
-    # impacting with the surface.
-    # def splat(self, jumper):
-    #     """
-    #     Parameters: jumper - list from Parachute class
-    #     Return: nothing
-    #     """
-    #     pass
