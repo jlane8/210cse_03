@@ -11,7 +11,7 @@ class Terminal:
     Parameters: none
     Return: nothing
     This represents the keyboard and console display serving
-    to interface with the player. It's methods handle all the
+    to interface with the player. Its methods handle all the
     various display options to show the player the puzzle, jumper,
     text, etc. It also gets any input from the player.
     """
