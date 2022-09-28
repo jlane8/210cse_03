@@ -25,7 +25,7 @@ class Parachute:
         This method will instantiate a Terminal, and create a fully formed
         parachute.
         """
-        
+
         # create Terminal instance and create new jumper and chute
         self._terminal = Terminal()
         self.restore()
@@ -51,13 +51,12 @@ class Parachute:
         send back False, if the length of the jumper list has chute, return True
         """
         
-        # if jumper list is at least 5 or more, return True
-        if len(self._jumper) >= 5:
+        # if jumper list is at least 5 or more, return True unless it has a 'dead head'
+        if len(self._jumper) >= 5 and self._jumper[0] != f"\033[1;31m      x      \033[00m":
             return True
 
-        # otherwise, insert the dead jumper head and return False    
+        # otherwise return False    
         else:
-            self._jumper[0] = self._dead_jumper
             return False
 
     # method to reset jumper and parachute to new
@@ -94,7 +93,13 @@ class Parachute:
         gradually removing part of the chute with each bad guess.
         """
         
-        # if guess is Fals and the length of the jumper list is not equal to five, 
-        # delete the first element in the jumper list
-        if not guess and len(self._jumper) != 5:
-            del self._jumper[0]
+        # if guess is False and the length of the jumper list is not equal to five, 
+        # delete the first element in the jumper list; if length is five, check to see
+        # if self._jumper[0] is equal to the dead head string; if it is not, then
+        # make self._jumper[0] equal to the dead head string, and afterward it will resume
+        # the countdown.
+        if not guess:
+            if len(self._jumper) == 6 and self._jumper[0] != f"\033[1;31m      x      \033[00m":
+                self._jumper[0] = f"\033[1;31m      x      \033[00m"
+            else:
+                del self._jumper[0]
