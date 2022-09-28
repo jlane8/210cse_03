@@ -1,9 +1,26 @@
+"""
+File: jumper.py
+Author: Jerry Lane
+Purpose: This class represents a jumper. It controls the game play
+         using instantiations of the Parachute, Puzzle, and Terminal
+         classes and internal methods of this class.
+"""
+# import the Parachute, Puzzle and Terminal classes
 from game.parachute import Parachute
 from game.puzzle    import Puzzle
 from game.terminal  import Terminal
 
+# class declaration
 class Jumper:
+    """
+    Parameters: none
+    Return: nothing
+    This class handles all the actions of the game. Just as a jumper
+    would take action to solve the problems of crashing from a 
+    foiled parachute, so will the player through this class.
+    """
 
+    # default constructor
     def __init__(self):
         """
         Parameters: none
@@ -21,6 +38,12 @@ class Jumper:
 
     # method starting and controlling game
     def start_game(self):
+        """
+        Parameters: none
+        Return: nothing
+        This is the start game method, where all the game directives are
+        handled.
+        """
         while self._is_playing:            
             self._puzzle.show()
             self._parachute.display()
@@ -38,9 +61,27 @@ class Jumper:
 
     # check to see if there is any chute left, if you, 
     def _has_health(self):
+        """
+        Parameters: none
+        Return: boolean sent from the Parachute class. 
+        If the player has chute left, then they have life. If the chute is
+        gone, so is the jumper's life.
+        """
         return self._parachute.has_chute()
 
+    # method of steps to take once the game has ended
     def _end_game(self):
+        """
+        Parameters: none
+        Return: nothing
+        This method handles the end game actions. It will reveal the puzzle through 
+        the puzzle class. If the player won, it will display a congratulations message.
+        Either way, it informs the player the game is over. Then, in the validate loop,
+        the player indicates whether they will play again or not. If yes, the game is
+        reset through the other classes, and if no, it gives a goodbye message and ends.
+        Finally, the loop ensures that only "y" and "n" inputs from the player are 
+        accepted.
+        """
         
         # reveal the puzzle
         self._puzzle.reveal()
