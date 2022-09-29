@@ -47,7 +47,7 @@ class Jumper:
         while self._is_playing:            
             self._puzzle.show()
             self._parachute.display()
-            self._letter_guessed = self._terminal.collect("Guess a letter: ")
+            self._letter_guessed = self._get_letter()
             self._letter_is_good = self._puzzle.check_guess(self._letter_guessed)
             if not self._letter_is_good:
                 self._parachute.check_chute(self._letter_is_good)
@@ -59,6 +59,18 @@ class Jumper:
                     self._has_won = True
                     self._end_game()
 
+    def _get_letter(self):
+        letter = ""
+        validation_in_progress = True
+        while validation_in_progress:
+            letter = self._terminal.collect("Guess a letter: ")
+            if len(letter) == 1 and letter.isalpha():
+                validation_in_progress = False
+            else:
+                self._terminal.onscreen("Bad input. Only a single letter is accepted.")
+                self._terminal.onscreen("Please try again.")
+        return letter
+    
     # check to see if there is any chute left, if you, 
     def _has_health(self):
         """
