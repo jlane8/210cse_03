@@ -4,30 +4,27 @@ Author: Jerry Lane
 Purpose: This class represents the parachute and what can happen
 to it over time with wrong choices.
 """
-# import Terminal class to instantiate a Terminal to use for player
-# interactions
-from game.terminal import Terminal
 
 # class declaration
 class Parachute:
     """
-    Parameters: none
+    Parameters: terminal - shares same terminal with caller
     Return: nothing
     This class represents the parachute object and handles the activities
     and results of band choices.
     """
 
     # constructor method
-    def __init__(self):
+    def __init__(self, terminal):
         """
-        Parameters: none
+        Parameters: terminal - shares same terminal instatiation with caller
         Return: nothing
         This method will instantiate a Terminal, and create a fully formed
         parachute.
         """
 
         # create Terminal instance and create new jumper and chute
-        self._terminal = Terminal()
+        self._terminal = terminal
         self.restore()
     
     # method to display the current jumper and parachute
@@ -85,7 +82,7 @@ class Parachute:
     # method to check to see if there is any chute left
     def check_chute(self, guess):
         """
-        Parameters: guess - a boolean sent by the Jumper class if a guess was wrong.
+        Parameters: guess - a boolean sent by the Jumper class 
         Return: nothing
         If the guess was wrong (False) and the length of the jumper string is not five
         then the first element in the jumper list is deleted. This allows the has_chute
