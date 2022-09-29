@@ -5,14 +5,13 @@ Purpose: This class represents the word puzzle and actions dealing with
 the puzzle.
 """
 
-# import the Terminal class and the random module
+# import the random module
 import random
-from game.terminal import Terminal
 
 # class declaration
 class Puzzle:
     """
-    Parameters: none
+    Parameters: terminal - shares same terminal instatiation with caller
     Return: nothing
     This class represents the secret word to be guessed, and all the actions
     involving it such as hiding the secret word in a underlined puzzle which
@@ -20,9 +19,9 @@ class Puzzle:
     """
     
     # constructor method
-    def __init__(self):
+    def __init__(self, terminal):
         """
-        Parameters: none
+        Parameters: terminal - shares same terminal instatiation with caller
         Return: nothing
         This constructor method creates a secret word list from which the secret
         word is selected at random. A Terminal instance is created, so this class
@@ -39,7 +38,7 @@ class Puzzle:
         self._secret = self._words[random.randint(0, len(self._words) - 1)]
         
         # create a Terminal instance
-        self._terminal = Terminal()
+        self._terminal = terminal
 
         # create the new puzzle
         self._make_puzzle()
