@@ -15,18 +15,6 @@ class Terminal:
     various display options to show the player the puzzle, jumper,
     text, etc. It also gets any input from the player.
     """
-    
-    # constructor method
-    def __init__(self):
-        """
-        Parameters: none
-        Return: nothing
-        This is a default constructor. It does nothing except be a 
-        basic constructor.
-        """
-        
-        # do nothing
-        pass
 
     # method to display the jumper list to the player
     def display(self, jumper):
