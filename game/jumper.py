@@ -27,9 +27,9 @@ class Jumper:
         Return: nothing
         This is the constructor method for the Jumper class
         """
-        self._parachute = Parachute()
         self._terminal = Terminal()
-        self._puzzle = Puzzle()
+        self._parachute = Parachute(self._terminal)
+        self._puzzle = Puzzle(self._terminal)
         self._health = self._has_health()
         self._is_playing = True
         self._letter_guessed = ""
@@ -82,8 +82,11 @@ class Jumper:
         Finally, the loop ensures that only "y" and "n" inputs from the player are 
         accepted.
         """
-        
-        # reveal the puzzle
+        # show puzzle and parachute end game state
+        self._puzzle.show()
+        self._parachute.display()
+
+        # reveal the puzzle's secret word
         self._puzzle.reveal()
 
         # if player won, give congrats
@@ -113,4 +116,5 @@ class Jumper:
             
             # if neither yes or no, let player know the input was wrong
             if again != "y" and again != "n":
-                self._terminal.onscreen("Incorrect response, try again.")
+                self._terminal.onscreen("Incorrect response, only 'y' and 'n' are accepted.")
+                self._terminal.onscreen("Please try again.")
