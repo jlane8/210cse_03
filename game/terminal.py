@@ -63,8 +63,6 @@ class Terminal:
         for i in range(40):
             print()
 
-        print("Solve the Puzzle:")
-
         # letter by letter, show the puzzle parameter to the player
         for i in range(len(puzzle)):
             print("  " + puzzle[i], end = "") # don't print new line
