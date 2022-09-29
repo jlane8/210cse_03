@@ -163,7 +163,7 @@ class Puzzle:
 
             # select new secret word from the list of secret words
             self._secret = self._words[random.randint(0, len(self._words) - 1)]
-            
+
             # if the selected word is different, turn off the loop
             if self._secret != temp:
                 no_duplicates = False
