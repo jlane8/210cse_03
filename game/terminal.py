@@ -59,8 +59,11 @@ class Terminal:
         the puzzle list that the Puzzle class amended before sending.
         """
 
-        # display a clean line before the puzzle hint
-        print()
+        # clear the screen
+        for i in range(40):
+            print()
+
+        print("Solve the Puzzle:")
 
         # letter by letter, show the puzzle parameter to the player
         for i in range(len(puzzle)):
