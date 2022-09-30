@@ -60,16 +60,16 @@ class Jumper:
                     self._end_game()
 
     def _get_letter(self):
-        letter = ""
+        self._letter = ""
         validation_in_progress = True
         while validation_in_progress:
-            letter = self._terminal.collect("Guess a letter: ")
-            if len(letter) == 1 and letter.isalpha():
+            self._letter = self._terminal.collect("Guess a letter: ")
+            if len(self._letter) == 1 and self._letter.isalpha():
                 validation_in_progress = False
             else:
                 self._terminal.onscreen("Bad input. Only a single letter is accepted.")
                 self._terminal.onscreen("Please try again.")
-        return letter
+        return self._letter
     
     # check to see if there is any chute left, if you, 
     def _has_health(self):
@@ -109,8 +109,8 @@ class Jumper:
         self._terminal.onscreen("Game over!\n")
         
         # get valid input and either reset for new game or setup for exit
-        validate = True
-        while validate:    
+        self._validate = True
+        while self._validate:    
             again = self._terminal.collect("Would you like to play again? y/n ")
             
             # if yes, reset the game so player can play again and end this loop
@@ -118,11 +118,11 @@ class Jumper:
                 self._has_won = False
                 self._parachute.restore()
                 self._puzzle.new_puzzle()
-                validate = False
+                self._validate = False
             
             # if no, give goodbye message, end game and this loop
             if again == "n":
-                validate = False
+                self._validate = False
                 self._is_playing = False
                 self._terminal.onscreen("Thanks for playing.\nGoodbye!\n")
             
